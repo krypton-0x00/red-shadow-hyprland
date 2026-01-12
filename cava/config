@@ -1,0 +1,38 @@
+[general]
+framerate = 60
+autosens = 1
+bars = 20 
+mono = yes
+
+[input]
+method = pulse
+
+[output]
+method = ncurses
+channels = mono
+foreground = gradient
+
+[gradient]
+color_1 = red
+color_2 = yellow
+color_3 = red
+
+
+[smoothing]
+integral = 60
+monstercat = 0
+waves = 0
+
+[eq]
+1 = 1
+2 = 1
+3 = 1
+4 = 1
+5 = 1
+6 = 1
+7 = 1
+8 = 1
+
+[style]
+style = blocks
+

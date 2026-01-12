@@ -8,6 +8,12 @@
   color: #ffffff;
 }
 
+#tray {
+  padding: 0 6px;
+  background: transparent;
+}
+
+
 #waybar {
   background: #000000;
 }
