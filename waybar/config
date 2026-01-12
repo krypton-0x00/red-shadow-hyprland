@@ -18,8 +18,6 @@
     "format": "{id}",
     "on-click": "activate",
     "all-outputs": true,
-    "persistent-workspaces": {
-      "*": 5
     }
   },
   "hyprland/window": {

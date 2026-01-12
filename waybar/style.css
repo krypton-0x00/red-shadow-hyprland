@@ -4,12 +4,16 @@
   font-family: monospace;
   font-size: 11px;
   font-weight: normal;
-  background: #000000;
+  /* background: #000000; */
   color: #ffffff;
 }
 
 #waybar {
   background: #000000;
+}
+
+label {
+  background: transparent;
 }
 
 #workspaces {
