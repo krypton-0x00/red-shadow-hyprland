@@ -52,6 +52,6 @@ The installer reads this file and installs packages using yay automatically. So 
 ## Notes
 
 - Symlinks are forced (`ln -sf`)
-- Script does not manage NVIDIA, If you want nvidia drivers check linutil by Christ Titus. 
+- Script does not manage NVIDIA. If you want NVIDIA drivers and hardware setup, check [Linutil](https://github.com/ChrisTitusTech/linutil) by Chris Titus.
 - Repository is intended for personal workstation setup.
 - If the script fails check the error and manually edit the `install.sh` script for fixes, most likly its gonna cause by the `packages.lst`, coz sometimes your setup would already have a certain packages that will conflict will the installer, in that case remove the package manually from `packages.lst` or from your system and rerun the `install.sh`.

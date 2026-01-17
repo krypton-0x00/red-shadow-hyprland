@@ -85,7 +85,6 @@ find . -maxdepth 1 -mindepth 1 \
   ! -name "README.md" \
   ! -name "themes" \
   ! -name "demo.mp4" \
-  ! -name "ghost.png" \
   ! -name "install.sh" \
   ! -name "walls" \
   ! -name "setup-themes.sh" \
