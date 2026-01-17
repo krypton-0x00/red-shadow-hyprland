@@ -126,6 +126,4 @@ installDriver() {
     printf "%b\n" "${GREEN}Please reboot your system for the changes to take effect.${RC}"
 }
 
-checkEnv
-checkEscalationTool
 installDriver

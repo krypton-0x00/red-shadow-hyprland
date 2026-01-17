@@ -100,6 +100,4 @@ main() {
     esac
 }
 
-checkEnv
-checkEscalationTool
 main
