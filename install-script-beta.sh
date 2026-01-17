@@ -71,16 +71,6 @@ echo "==== Bluetooth setup complete ===="
 # ===============================
 
 echo "=== Setting up dotfiles ==="
-
-if [ -d "$REPO_DIR/.git" ]; then
-    echo "[+] Repo found, pulling latest changes..."
-    git -C "$REPO_DIR" pull --rebase || {
-        echo "[!] Pull failed"; exit 1;
-    }
-else
-    echo "[!] Repo not found at $REPO_DIR — skipping pull and clone."
-fi
-
 echo "[*] Creating symlinks into ~/.config ..."
 
 
@@ -103,12 +93,13 @@ find . -maxdepth 1 -mindepth 1 \
   ! -name "packages.lst" \
   ! -name "security-pkgs.lst" \
   | sed 's|^\./||' \
-  | xargs -I{} sh -c '
-        src="$REPO_DIR/{}"
-        dst="$HOME/.config/{}"
-        echo "ln -sf \"$src\" \"$dst\""
-        ln -sf "$src" "$dst"
-    '
+  | xargs -I{} sh -c "
+    src=\"$REPO_DIR/{}\"
+    dst=\"$HOME/.config/{}\"
+    echo ln -sf \"$src\" \"$dst\"
+    ln -sf \"$src\" \"$dst\"
+  "
+
 
 echo "=== Dotfiles setup complete ==="
 # ===============================
