@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-set -e
+PKGFILE="packages.lst"
+REPO_DIR="$HOME/dotfiles-new-hyprland"
+SECFILE="$REPO_DIR/security-pkgs.lst"
+# ===============================
+# Package Install + Requirements
+# ===============================
 
 if [[ ! -f "$PKGFILE" ]]; then
     echo "Error: $PKGFILE not found"
@@ -16,22 +22,23 @@ if ! command -v yay &> /dev/null; then
     git clone https://aur.archlinux.org/yay.git "$tmpdir/yay"
     cd "$tmpdir/yay"
     makepkg -si --noconfirm
-
     cd -
 fi
 
 echo "Installing packages from $PKGFILE..."
-
 yay -S --needed --noconfirm $(cat "$PKGFILE")
-
 echo "Done!"
 
+# ===============================
+# PipeWire
+# ===============================
+
 echo "=== Setting up PipeWire Audio ==="
-# we skip pipewire here coz its in the packages.lst
+
 sudo pacman -S --needed --noconfirm \
     pipewire-pulse \
     pipewire-alsa \
-    pipewire-jack \
+    pipewire-jack
 
 if pacman -Q pulseaudio &>/dev/null; then
     echo "Pulseaudio detected, removing..."
@@ -47,10 +54,126 @@ systemctl --user enable --now pipewire.service
 systemctl --user enable --now wireplumber.service
 systemctl --user enable --now pipewire-pulse.service
 
-echo "=== PipeWire Audio setup complete. A reboot is recommended. ==="
+echo "=== PipeWire Audio setup complete. ==="
 
-echo "=== Installing Bluetooth Utils"
+# ===============================
+# Bluetooth
+# ===============================
+
+echo "=== Installing Bluetooth Utils ==="
 sudo pacman -S --needed --noconfirm bluez bluez-utils
 sudo systemctl enable --now bluetooth.service
-echo "====Bluetooth setup complete===="
+echo "==== Bluetooth setup complete ===="
+
+# ===============================
+# Dotfiles 
+# ===============================
+
+echo "=== Setting up dotfiles ==="
+echo "[*] Creating symlinks into ~/.config ..."
+
+
+cd "$REPO_DIR"
+
+echo "[*] Linking dotfiles into ~/.config/ ..."
+
+mkdir -p "$HOME/.config"
+
+find . -maxdepth 1 -mindepth 1 \
+  ! -name ".git" \
+  ! -name ".github" \
+  ! -name "README.md" \
+  ! -name "themes" \
+  ! -name "demo.mp4" \
+  ! -name "ghost.png" \
+  ! -name "install.sh" \
+  ! -name "setup-themes.sh" \
+  ! -name "install-script-beta.sh" \
+  ! -name "packages.lst" \
+  ! -name "security-pkgs.lst" \
+  | sed 's|^\./||' \
+  | xargs -I{} bash -c "
+        src=\"$REPO_DIR/{}\"
+        dst=\"$HOME/.config/{}\"
+
+        echo ln -sf \"\$src\" \"\$dst\"
+        ln -sf \"\$src\" \"\$dst\"
+    "
+
+
+
+echo "=== Dotfiles setup complete ==="
+# ===============================
+# Theme 
+# ===============================
+
+
+echo "=== Installing Themes."
+if [ -x "$REPO_DIR/setup-themes.sh" ]; then
+    echo "[*] Running theme setup…"
+    "$REPO_DIR/setup-themes.sh"
+else
+    echo "[!] setup-themes.sh not executable, fixing perms..."
+    chmod +x "$REPO_DIR/setup-themes.sh"
+    "$REPO_DIR/setup-themes.sh"
+fi
+echo "=== Theme Setup Done==="
+# ===============================
+# Security Tool 
+# ===============================
+
+echo ""
+read -r -p "Do you want to install security tools? [y/N]: " ans
+
+case "$ans" in
+    y|Y|yes|YES)
+        if [[ ! -f "$SECFILE" ]]; then
+            echo "[!] $SECFILE not found — skipping security install!"
+        else
+            echo "[*] Installing security tools from $SECFILE..."
+            yay -S --needed --noconfirm $(cat "$SECFILE")
+            echo "[✓] Security tools install complete."
+        fi
+        ;;
+    *)
+        echo "[*] Skipping security tools."
+        ;;
+esac
+
+# ===============================
+# NVIDIA 
+# ===============================
+read -r -p "Do you want to install NVIDIA drivers? [y/N]: " ans
+case "$ans" in
+    y|Y|yes|YES)
+        echo "[*] Running NVIDIA driver installer..."
+        . "$REPO_DIR/nvidia-setup.sh"
+        ;;
+    *)
+        echo "[*] Skipping NVIDIA setup."
+        ;;
+esac
+
+# ===============================
+# Virtualization 
+# ===============================
+
+read -r -p "Do you want to install virtualization tools (QEMU/Libvirt/Virt-Manager)? [y/N]: " ans
+case "$ans" in
+    y|Y|yes|YES)
+        echo "[*] Running virtualization setup..."
+        chmod +x "$REPO_DIR/qemu-setup.sh"
+        (
+            . "$REPO_DIR/qemu-setup.sh"
+        )
+        echo "[+] Virtualization tools setup complete."
+        ;;
+    *)
+        echo "[*] Skipping virtualization setup."
+        ;;
+esac
+
+echo "===All Done==="
+
+
 
