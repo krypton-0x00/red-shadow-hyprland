@@ -2,7 +2,7 @@
 set -euo pipefail
 
 PKGFILE="packages.lst"
-REPO_URL="https://github.com/krypton-0x00/dotfiles-new-hyprland"
+# REPO_URL="https://github.com/krypton-0x00/dotfiles-new-hyprland"
 REPO_DIR="$HOME/dotfiles-new-hyprland"
 SECFILE="$REPO_DIR/security-pkgs.lst"
 # ===============================
@@ -73,18 +73,16 @@ echo "==== Bluetooth setup complete ===="
 echo "=== Setting up dotfiles ==="
 
 if [ -d "$REPO_DIR/.git" ]; then
-    echo "[+] Repo already exists, pulling updates..."
+    echo "[+] Repo found, pulling latest changes..."
     git -C "$REPO_DIR" pull --rebase || {
         echo "[!] Pull failed"; exit 1;
     }
 else
-    echo "[*] Cloning fresh repo..."
-    git clone "$REPO_URL" "$REPO_DIR" || {
-        echo "[!] Clone failed"; exit 1;
-    }
+    echo "[!] Repo not found at $REPO_DIR — skipping pull and clone."
 fi
 
-echo "[*] Creating symlinks into \$HOME ..."
+echo "[*] Creating symlinks into ~/.config ..."
+
 
 cd "$REPO_DIR"
 
