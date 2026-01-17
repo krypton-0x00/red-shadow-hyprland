@@ -2,8 +2,6 @@
 
 set -e
 
-PKGFILE="packages.lst"
-
 if [[ ! -f "$PKGFILE" ]]; then
     echo "Error: $PKGFILE not found"
     exit 1
