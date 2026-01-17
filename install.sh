@@ -87,6 +87,7 @@ find . -maxdepth 1 -mindepth 1 \
   ! -name "demo.mp4" \
   ! -name "ghost.png" \
   ! -name "install.sh" \
+  ! -name "walls" \
   ! -name "setup-themes.sh" \
   ! -name "install-script-beta.sh" \
   ! -name "packages.lst" \
