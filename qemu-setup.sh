@@ -3,6 +3,13 @@
 # Credits: Christ Titus Linux Utill
 # More here: https://github.com/ChrisTitusTech/linutil
 
+RC='\033[0m'
+RED='\033[31m'
+YELLOW='\033[33m'
+CYAN='\033[36m'
+GREEN='\033[32m'
+
+
 installQEMUDesktop() {
     if ! command_exists qemu-img; then
         printf "%b\n" "${YELLOW}Installing QEMU.${RC}"

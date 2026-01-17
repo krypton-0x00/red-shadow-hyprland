@@ -2,6 +2,11 @@
 
 # Credits: Christ Titus Linux Utill
 # More here: https://github.com/ChrisTitusTech/linutil
+RC='\033[0m'
+RED='\033[31m'
+YELLOW='\033[33m'
+CYAN='\033[36m'
+GREEN='\033[32m'
 
 LIBVA_DIR="$HOME/.local/share/linutil/libva"
 MPV_CONF="$HOME/.config/mpv/mpv.conf"
