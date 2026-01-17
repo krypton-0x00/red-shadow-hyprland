@@ -38,8 +38,8 @@ echo "=== Setting up PipeWire Audio ==="
 sudo pacman -S --needed --noconfirm \
     pipewire-pulse \
     pipewire-alsa \
-    # pipewire-jack
-    jack2
+    pipewire-jack
+    # jack2
 
 if pacman -Q pulseaudio &>/dev/null; then
     echo "Pulseaudio detected, removing..."
