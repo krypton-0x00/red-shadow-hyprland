@@ -139,40 +139,6 @@ case "$ans" in
         echo "[*] Skipping security tools."
         ;;
 esac
-
-# ===============================
-# NVIDIA 
-# ===============================
-read -r -p "Do you want to install NVIDIA drivers? [y/N]: " ans
-case "$ans" in
-    y|Y|yes|YES)
-        echo "[*] Running NVIDIA driver installer..."
-        . "$REPO_DIR/nvidia-setup.sh"
-        ;;
-    *)
-        echo "[*] Skipping NVIDIA setup."
-        ;;
-esac
-
-# ===============================
-# Virtualization 
-# ===============================
-
-read -r -p "Do you want to install virtualization tools (QEMU/Libvirt/Virt-Manager)? [y/N]: " ans
-case "$ans" in
-    y|Y|yes|YES)
-        echo "[*] Running virtualization setup..."
-        chmod +x "$REPO_DIR/qemu-setup.sh"
-        (
-            . "$REPO_DIR/qemu-setup.sh"
-        )
-        echo "[+] Virtualization tools setup complete."
-        ;;
-    *)
-        echo "[*] Skipping virtualization setup."
-        ;;
-esac
-
 echo "===All Done==="
 
 
