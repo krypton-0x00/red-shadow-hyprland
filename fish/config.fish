@@ -12,15 +12,15 @@ bind \e\[1\;5C forward-word
 # install wrapper
 function install
   
-    if not test -e ~/dotfiles-new-hyprland/packages.lst
-        touch ~/dotfiles-new-hyprland/packages.lst
+    if not test -e ~/red-shadow-hyprland/packages.lst
+        touch ~/red-shadow-hyprland/packages.lst
     end
 
 
     yay -S $argv
     for pkg in $argv
-        if not grep -qx "$pkg" ~/dotfiles-new-hyprland/packages.lst
-            echo "$pkg" >> ~/dotfiles-new-hyprland/packages.lst
+        if not grep -qx "$pkg" ~/red-shadow-hyprland/packages.lst
+            echo "$pkg" >> ~/red-shadow-hyprland/packages.lst
         end
     end
 end

@@ -2,7 +2,7 @@
 set -euo pipefail
 
 PKGFILE="packages.lst"
-REPO_DIR="$HOME/dotfiles-new-hyprland"
+REPO_DIR="$HOME/red-shadow-hyprland"
 SECFILE="$REPO_DIR/security-pkgs.lst"
 # ===============================
 # Package Install + Requirements

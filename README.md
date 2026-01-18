@@ -24,8 +24,8 @@ rm -rf ~/.config
 Clone the repository:
 
 ```sh
-git clone https://github.com/krypton-0x00/dotfiles-new-hyprland.git
-cd dotfiles-new-hyprland
+git clone https://github.com/krypton-0x00/red-shadow-hyprland
+cd red-shadow-hyprland
 ```
 
 Run the installer:

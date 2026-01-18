@@ -9,10 +9,10 @@ echo "[+] Installing extraction tools"
 sudo pacman -S --noconfirm p7zip
 
 echo "[+] Extracting theme"
-7z x ~/dotfiles-new-hyprland/themes/Midnight-Red.7z -o"$HOME/.themes"
+7z x ~/red-shadow-hyprland/themes/Midnight-Red.7z -o"$HOME/.themes"
 
 echo "[+] Extracting icons"
-tar -xf ~/dotfiles-new-hyprland/themes/ColorFlow.tar.xz -C ~/.icons
+tar -xf ~/red-shadow-hyprland/themes/ColorFlow.tar.xz -C ~/.icons
 
 
 echo "[+] Fixing permissions"
