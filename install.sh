@@ -167,8 +167,6 @@ esac
 # ===============================
 # Shell setup 
 # ===============================
-
-
 if command -v fish >/dev/null 2>&1; then
     CURR_SHELL="$(basename "$SHELL")"
     if [[ "$CURR_SHELL" != "fish" ]]; then
@@ -192,6 +190,15 @@ if command -v fish >/dev/null 2>&1; then
 else
     echo "Fish not installed — skipping shell setup."
 fi
+# ===============================
+# Post Install 
+# ===============================
+warn "A reboot is recommended."
+read -r -p "Reboot now? [y/N]: " ans
+case "$ans" in
+    y|Y|yes|YES) info "Rebooting..."; sudo reboot ;;
+    *) info "Reboot later." ;;
+esac
 
 info "===All Done==="
 
