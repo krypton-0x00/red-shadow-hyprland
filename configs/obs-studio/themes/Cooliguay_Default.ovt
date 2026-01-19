@@ -1,7 +1,0 @@
-@OBSThemeMeta {
-    name: 'Original';
-    id: 'com.obsproject.Cooliguay.Default';
-    extends: 'com.obsproject.Cooliguay';
-    author: 'Monsteer';
-    dark: 'true';
-}
