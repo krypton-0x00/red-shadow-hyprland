@@ -7,9 +7,9 @@ This repository contains a Red-Black themed Hyprland configuration.
 
 ## Demo
 
-Demo video showing the configuration in use:
+Video Guide:
 
-https://jmp.sh/Ey29okW54BcgsAG1IBfS
+https://www.youtube.com/watch?v=hMgZhhmL-3A
 
 ---
 
