@@ -22,6 +22,7 @@ echo "[+] Setting up themes..."
 
 gsettings set org.gnome.desktop.interface gtk-theme "Midnight-Red"
 gsettings set org.gnome.desktop.interface icon-theme "ColorFlow"
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 echo "[+] Done"
 

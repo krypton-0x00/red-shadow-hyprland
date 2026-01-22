@@ -1,0 +1,22 @@
+[color]
+
+# Colors can be one of seven predefined: black, blue, cyan, green, magenta, red, white, yellow.
+# Or defined by hex code '#rrggbb' (hex code must be within ''). 
+
+background = '#000000'
+foreground = '#FF4658'
+
+# Gradient mode, only hex defined colors are supported,
+# background must also be defined in hex or remain commented out. 
+# 1 = on, 0 = off. 
+# Warning: for certain terminal emulators cava will not able to restore color palette after exit,
+# Use at your own risk.
+gradient = 1
+gradient_count = 6
+gradient_color_1 = '#330F12'
+gradient_color_2 = '#661E27'
+gradient_color_3 = '#992D3B'
+gradient_color_4 = '#CC3C4F'
+gradient_color_5 = '#FF4658'   # base
+gradient_color_6 = '#FF6E7D'   # highlight
+
