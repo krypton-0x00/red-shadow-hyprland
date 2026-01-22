@@ -11,7 +11,10 @@ Video Guide:
 
 https://www.youtube.com/watch?v=hMgZhhmL-3A
 
----
+
+## Photos
+![Rice](assets/show.png)
+
 
 ## Installation
 
@@ -47,7 +50,6 @@ The installer performs the following:
 - Runs theme setup script
 - Optionally installs security tools
 
----
 
 ## Package List
 
@@ -60,7 +62,6 @@ packages.lst
 The installer reads this file and installs packages using `yay` automatically.  
 No need to worry about dependencies.
 
----
 
 ## Notes
 
